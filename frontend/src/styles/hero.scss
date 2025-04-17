@@ -1,0 +1,151 @@
+@use "sass:color";
+@use "./variables" as *;
+
+.hero-section {
+  background-color: $primary-color;
+  padding: $spacing;
+  color: $text-color;
+  text-align: center;
+  padding: $spacing-zero;
+  margin: $spacing-zero;
+
+  h1 {
+    font-family: $fonts;
+    font-size: 3rem;
+  }
+
+  .hero-button {
+    background-color: $secondary-color;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: color.adjust($secondary-color, $lightness: -10%);
+    }
+  }
+}
+
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  color: $white;
+
+  &__social {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 3;
+    display: flex;
+    gap: 1rem;
+
+    a {
+      color: $white;
+      font-size: 1.5rem;
+      transition: color $transition-speed;
+
+      &:hover {
+        color: $accent-color;
+      }
+    }
+  }
+
+  &__slideshow {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  &__slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    animation-duration: $hero-duration;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+
+  &__slide--first {
+    animation-name: fade1;
+  }
+
+  &__slide--second {
+    animation-name: fade2;
+  }
+
+  &__slide--third {
+    animation-name: fade3;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: $dark-overlay;
+    padding: 0 1rem;
+  }
+
+  &__title {
+    font-size: 3rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+  }
+
+  &__subtitle {
+    font-size: 1.5rem;
+  }
+}
+@mixin reset-spacing {
+  margin: 0;
+  padding: 0;
+}
+/* Keyframes */
+@keyframes fade1 {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  33.33%,
+  66.66% {
+    opacity: 0;
+  }
+}
+
+@keyframes fade2 {
+  0%,
+  33.33% {
+    opacity: 0;
+  }
+  33.34%,
+  66.66% {
+    opacity: 1;
+  }
+  66.67%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fade3 {
+  0%,
+  66.66% {
+    opacity: 0;
+  }
+  66.67%,
+  99.99% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

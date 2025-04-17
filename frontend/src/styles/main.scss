@@ -1,2 +1,5 @@
-@import './variables';
-@import './hero';
+@use 'sass:color';
+@use './variables' as *;
+@use './hero';
+
+
